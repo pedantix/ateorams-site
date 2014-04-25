@@ -20,6 +20,9 @@ gem 'simple_form'
 gem 'title'
 gem 'uglifier'
 gem 'unicorn'
+gem 'slim'
+gem 'slim-rails'
+
 
 group :development do
   gem 'foreman'
