@@ -31,6 +31,7 @@ gem 'meta-tags'
 
 
 group :development do
+  gem "annotator"
   gem 'foreman'
   gem 'spring'
   gem 'spring-commands-rspec'
