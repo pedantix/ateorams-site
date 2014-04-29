@@ -20,8 +20,14 @@ gem 'simple_form'
 gem 'title'
 gem 'uglifier'
 gem 'unicorn'
+
+
 gem 'slim'
 gem 'slim-rails'
+gem "foundation-rails"
+gem 'foundation-icons-sass-rails', "~> 3.0.0"
+
+gem 'meta-tags'
 
 
 group :development do

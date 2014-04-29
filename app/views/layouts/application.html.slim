@@ -2,17 +2,19 @@ doctype html
 html
   head
     meta charset="utf-8" /
-    meta content="NOODP" name="ROBOTS" /
-    title = page_title app_name: "ATEORAMS", separator: "| ", page_title_symbol: :page_title
-
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"] /
+   
+    = render 'layouts/seo_tags'
    
     - for size in [114, 120, 152, 144, 57, 72, 76] do
       = favicon_link_tag "apple-touch-icon-#{size}x#{size}.png", rel: "apple-touch-icon", sizes: size, type: "image/png" 
     = favicon_link_tag 'favicon.ico'
+    = javascript_include_tag "vendor/modernizr"
 
     = stylesheet_link_tag :application, media: 'all'
     = csrf_meta_tags
   body class=body_class
+    = render 'layouts/top_bar'
     = render 'flashes'
     = yield
     = render 'javascript'

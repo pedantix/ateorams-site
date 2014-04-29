@@ -81,3 +81,22 @@ RSpec::Matchers.define :have_favicon do
   end
 end
 
+
+
+RSpec::Matchers.define :have_meta_path do |meta_ast_hash|
+  meta_content_str = ""
+
+  meta_ast_hash.each do |k,v| 
+    meta_content_str << " and " unless meta_content_str.length == 0
+    meta_content_str << "@#{k}='#{v}'"
+  end
+  expected_xpath ="//head/meta[#{meta_content_str}]" 
+  match do |p|
+    p.has_xpath?(expected_xpath, visible:false)
+  end
+
+  failure_message_for_should do |page|
+    %Q|  expected that the page would have desire meta tag, which would match "#{expected_xpath}"|
+  end
+end
+
