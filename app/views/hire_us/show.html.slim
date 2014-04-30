@@ -1,0 +1,20 @@
+- content_for(:page_title, "Hire Us")
+h2 Hire ATEORAMS
+= form_for @work_inquiry, url: hire_us_path do |f|
+  
+  = f.label :client_name, "name"
+  = f.text_field :client_name, placeholder: "What shall we call you?"
+
+  = f.label :client_email, "email"
+  = f.text_field :client_email, placeholder: "What email address should we use?"
+
+  = f.label :client_phone, "phone"
+  = f.text_field :client_phone, placeholder: "What phone number should we call you at?"
+
+  = f.label :budget, "budget"
+  = f.text_field :budget, placeholder: "How much do you have budgeted for this project?"
+
+  = f.label :job_description, "job description"
+  = f.text_area :job_description, placeholder: "What do you want to hire us to do..."
+
+  = f.submit "submit"

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 
-feature "layout", :js do
+feature "'application' template", :js do
   after(:each) { output_page_error example, page }
   before do
     visit root_path
