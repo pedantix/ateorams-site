@@ -1,0 +1,7 @@
+.ateorams-submit {
+  text-transform: uppercase;
+  @include button($padding: rem-calc(11), 
+                  $bg: FireBrick,
+                  $radius: true
+                   );
+}

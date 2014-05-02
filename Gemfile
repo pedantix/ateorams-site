@@ -28,7 +28,7 @@ gem "foundation-rails"
 gem 'foundation-icons-sass-rails', "~> 3.0.0"
 
 gem 'meta-tags'
-
+gem 'devise'
 
 group :development do
   gem "annotator"

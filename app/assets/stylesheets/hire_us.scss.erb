@@ -1,0 +1,65 @@
+@import "foundation/components/panels";
+
+body {  
+  background-image: url( <%= asset_path 'celestial_birth_ateorams_ol.jpg' %> );
+  background-repeat:no-repeat;  
+  background-color:black; background-size: cover; 
+};
+
+
+
+.form-heading { color: white; }
+.required {
+  font-size: 22px;
+  color: FireBrick; 
+}
+
+
+// input {
+//   background-color: DimGrey;
+// }
+$form-border-color: Grey;
+
+@mixin hire-us-form{
+  background-color: DimGrey;
+  border-top-color: $form-border-color;
+  border-right-color: $form-border-color;
+  border-bottom-color: $form-border-color;
+  border-left-color: $form-border-color;
+}
+
+@mixin placeholder($color) {
+
+
+  &::-webkit-input-placeholder { color: $color; }
+  &::-moz-placeholder { color: $color; }
+  &:-webkit-input-placeholder { color: $color; }
+  &:-moz-placeholder { color: $color; }
+  &:-ms-input-placeholder { color: $color; }
+}
+
+
+input[type="text"],
+textarea {
+  @include hire-us-form;
+  @include placeholder(#fff);
+}
+
+@mixin confirmation_style{
+  color: White;
+}
+
+h2,p {
+  @include confirmation_style;
+}
+
+.thank-you-panel {
+  @include panel(
+    // Sets the panel background color. Default: $panel-pg
+    $bg: rgba(204,204, 204, 0.02),
+    // Sets the panel padding amount. Default: $panel-padding
+    $padding:20px,
+    // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
+    $adjust:true
+  );
+}

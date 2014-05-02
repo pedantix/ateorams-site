@@ -1,0 +1,33 @@
+- separator = "\n#{'=' * 40}\n"
+h4
+  = "#{@inquiry.client_name},"
+br
+p
+  = statement_of_purpose
+  br
+  br
+  |Project Description
+  hr
+  = @inquiry.job_description
+  br
+  br
+  |Contact Information
+  hr
+  = "Name: #{@inquiry.client_name}\n"
+  = "Email: #{@inquiry.client_email}\n"
+  = "Phone Number: #{@inquiry.client_phone}"
+  br
+  br
+  |Project Budget
+  hr 
+  = @inquiry.budget
+  br
+  br
+  = we_will_reply
+br
+br
+blockquote
+  = "Shaun Hubbard"
+  br
+  cite
+    = "ATEORAMS Developer"

@@ -1,0 +1,26 @@
+- separator = "\n#{'=' * 40}\n"
+- line_feed = "\n\n"
+= @inquiry.client_name.html_safe
+= ",\n\n"
+
+= statement_of_purpose
+= line_feed
+|Project Description
+= separator
+= @inquiry.job_description
+= line_feed
+|Contact Information
+= separator
+= "Name: #{@inquiry.client_name}\n"
+= "Email: #{@inquiry.client_email}\n"
+= "Phone Number: #{@inquiry.client_phone}"
+= line_feed
+
+|Project Budget
+= separator 
+= @inquiry.budget
+= line_feed
+= we_will_reply
+= line_feed
+= line_feed
+= "Shaun Hubbard\nATEORAMS Developer"
