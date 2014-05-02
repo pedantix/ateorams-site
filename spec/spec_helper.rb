@@ -7,13 +7,16 @@ require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
 require 'webmock/rspec'
-
+require 'capybara/email/rspec'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 module Features
   # Extend this module in spec/support/features/*.rb
 end
+
+
+ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.expect_with :rspec do |c|

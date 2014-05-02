@@ -1,20 +1,51 @@
 - content_for(:page_title, "Hire Us")
-h2 Hire ATEORAMS
-= form_for @work_inquiry, url: hire_us_path do |f|
-  
-  = f.label :client_name, "name"
-  = f.text_field :client_name, placeholder: "What shall we call you?"
 
-  = f.label :client_email, "email"
-  = f.text_field :client_email, placeholder: "What email address should we use?"
+- content_for(:custom_style)
+  = stylesheet_link_tag params[:controller] 
 
-  = f.label :client_phone, "phone"
-  = f.text_field :client_phone, placeholder: "What phone number should we call you at?"
+div.row
+  div.small-12.small-centered.columns
+    h2.form-heading Hire ATEORAMS
+    = form_for @work_inquiry, url: hire_us_path do |f|
+      
+      div.row
+        div.small-1.columns
+          = f.label :client_name, "*", class: 'right inline required'
+        div.small-11.columns
+          = f.text_field :client_name, placeholder: "What is your name?", class:"#{f.object.errors[:client_name].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :client_name)
+         
+      div.row
+        div.small-1.columns
+          = f.label :client_email, "*", class: 'right inline required'
+        div.small-11.columns      
+          = f.text_field :client_email, placeholder: "What email address should we use?", class:"#{f.object.errors[:client_email].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :client_email)
+      div.row
+        div.small-1.columns
+          = f.label :client_phone, "*", class: 'right inline required'
+        div.small-11.columns
+          = f.text_field :client_phone, placeholder: "What is your best contact phone number?", class:"#{f.object.errors[:client_phone].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :client_phone)
+      div.row
+        div.small-1.columns
+          = f.label :budget, "*", class: 'right inline required'
+        div.small-11.columns
+          = f.text_field :budget, placeholder: "How much do you have budgeted for this project?", class:"#{f.object.errors[:budget].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :budget)
+      div.row
+        div.small-1.columns
+          = f.label :job_description, "*", class: 'right inline required'
+        div.small-11.columns    
+          = f.text_area :job_description, placeholder: "Describe the project...", class:"#{f.object.errors[:job_description].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :job_description)
+      div.row
+        div.small-1.columns
+          = f.label :reference_source, "&nbsp;".html_safe, class: "optional-input"
+        div.small-11.columns
+          = f.text_field :reference_source, placeholder: "How did you hear about us?", class:"#{f.object.errors[:reference_source].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :reference_source)
 
-  = f.label :budget, "budget"
-  = f.text_field :budget, placeholder: "How much do you have budgeted for this project?"
-
-  = f.label :job_description, "job description"
-  = f.text_area :job_description, placeholder: "What do you want to hire us to do..."
-
-  = f.submit "submit"
+      div.row
+        div.small-4.small-offset-2.columns
+          = f.submit "submit", class: 'ateorams-submit'

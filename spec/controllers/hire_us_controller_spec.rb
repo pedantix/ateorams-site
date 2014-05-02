@@ -24,13 +24,15 @@ describe HireUsController do
         client_email:  Faker::Internet.email,
         client_phone:  Faker::PhoneNumber.phone_number,
         job_description: Faker::Lorem.paragraph,
-        budget: Faker::Lorem.sentence
+        budget: Faker::Lorem.sentence,
+        reference_source: Faker::Lorem.sentence
       }
     end
 
     let(:invalid_inquiry) do
       inv_inq = valid_inquiry.dup
       inv_inq.delete(:budget)
+      inv_inq
     end
 
     context "with valid inquiry" do

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WorkInquiry do
   it "should have required attributes" do
-    [:budget, :client_email, :client_name, :client_phone].each do |a|
+    [:budget, :client_email, :client_name, :client_phone, :job_description].each do |a|
       should validate_presence_of(a)
     end
   end
@@ -15,4 +15,6 @@ describe WorkInquiry do
     expect(FactoryGirl.build(:work_inquiry, client_email:"bad3mail.com")).to be_invalid
     expect(FactoryGirl.build(:work_inquiry, client_email:"good@mail.com")).to be_valid
   end
+
+  it { should respond_to(:reference_source) }
 end

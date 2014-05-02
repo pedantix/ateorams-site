@@ -12,6 +12,7 @@ html
     = javascript_include_tag "vendor/modernizr"
 
     = stylesheet_link_tag :application, media: 'all'
+    = yield :custom_style
     = csrf_meta_tags
   body class=body_class
     = render 'layouts/top_bar'
