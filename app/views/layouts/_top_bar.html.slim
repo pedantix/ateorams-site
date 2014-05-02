@@ -13,4 +13,7 @@ header.sticky
         li = link_to 'blog', '#'
         li.divider
         li = link_to 'hire us', hire_us_path
+        - if admin_signed_in?
+          li.divider
+          li = link_to 'sign out',    destroy_admin_session_path, method: :delete
 
