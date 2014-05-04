@@ -1,0 +1,20 @@
+= render 'devise/shared/error_notifications'
+div.row
+  div.12-small.columns
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| 
+      = field_set_tag "Sign up"
+        div.row
+          div.10-small.columns
+            = f.input :email, required: true, autofocus: true 
+            = f.input :password, required: true
+            = f.input :password_confirmation, required: true
+            = f.input :username, required: true
+            = f.input :phone, required: false
+            = f.input :twitter_handle, required: false
+
+
+        div.row
+          div.8-small.small-offset-1.columns
+            = f.button :submit, "Sign up", class: "button small radius"
+    fieldset
+      = render "devise/shared/links" 

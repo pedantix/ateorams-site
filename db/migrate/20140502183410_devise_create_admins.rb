@@ -30,7 +30,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       t.string   :unlock_token # Only if unlock strategy is :email or :both
       t.datetime :locked_at
 
-      t.string :name
+      t.string :username
       t.string :phone
       t.string :twitter_handle
       t.boolean :site_admin, default: false
@@ -54,7 +54,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration
         email: ENV['SITE_ADMIN_EMAIL'], 
         password: ENV['SITE_ADMIN_PASSWORD'], 
         password_confirmation: ENV['SITE_ADMIN_PASSWORD'],
-        name: ENV['SITE_ADMIN_NAME'], 
+        username: ENV['SITE_ADMIN_NAME'], 
         twitter_handle: ENV['SITE_ADMIN_TWITTER'],
         site_admin: true, approved: true)
     end

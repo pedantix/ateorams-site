@@ -4,7 +4,7 @@ describe Admin do
 
   describe "should have attributes" do
     let(:admin) { Admin.new }
-    it { expect(admin).to respond_to(:name) }
+    it { expect(admin).to respond_to(:username) }
     it { expect(admin).to respond_to(:email) }
     it { expect(admin).to respond_to(:password) }
     it { expect(admin).to respond_to(:password_confirmation) }
@@ -16,7 +16,7 @@ describe Admin do
 
 
   it "should validate presence of required attributes" do
-    [:name, :email].each {|a| should validate_presence_of(a) }
+    [:username, :email].each {|a| should validate_presence_of(a) }
   end
 
 

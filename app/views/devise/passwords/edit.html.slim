@@ -1,0 +1,19 @@
+= render 'devise/shared/error_notifications'
+div.row
+  div.12-small.columns
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| 
+      = field_set_tag "Change your password"
+        div.row
+          div.10-small.columns
+            = f.input :reset_password_token, as: :hidden 
+            = f.full_error :reset_password_token
+
+            = f.input :password, label: "New password", required: true, autofocus: true 
+            = f.input :password_confirmation, label: "Confirm your new password", required: true 
+
+        div.row
+          div.8-small.small-offset-1.columns
+            = f.button :submit, "Change my password" 
+
+      fieldset 
+        = render "devise/shared/links"

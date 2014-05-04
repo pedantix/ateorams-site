@@ -1,0 +1,4 @@
+- unless resource.errors.empty?
+  = content_tag(:div, class:"alert-box alert", data: {alert:nil})
+    | There was an error in the registration.
+    a[href="#" class="close"]&times;

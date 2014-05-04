@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140502183410) do
     t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "name"
+    t.string   "username"
     t.string   "phone"
     t.string   "twitter_handle"
     t.boolean  "site_admin",             default: false
