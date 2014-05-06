@@ -1,0 +1,14 @@
+table
+  thead
+    tr
+      th Id
+      th User Name
+      th Email
+      th Action
+  tbody
+    - for admin in admins do
+      = content_tag(:tr, class: "admin-#{admin.id}")
+        td.admin-id = admin.id
+        td.admin-username = admin.username
+        td.admin-email = admin.email
+        td.admin-action = link_to 'edit', edit_admin_user_path(admin) unless admin.id.equal?(current_admin.id)

@@ -1,0 +1,17 @@
+- content_for(:page_title, "Edit #{@admin.username}'s Account".html_safe)
+
+div.row
+  div.12-small.columns
+    = simple_form_for(@admin, url: admin_user_path(@admin) ) do |f|
+      = field_set_tag 'Edit Admin Privledges'
+        = field_set_tag 'Site Access'
+          div.row
+            div.small-6.columns
+              = f.input :approved
+            div.small-6.columns
+              = f.input :site_admin
+
+        div.row
+          div.8-small.small-offset-1.columns
+            = f.button :submit, "Update", class: "button small radius"
+      

@@ -12,23 +12,11 @@ div.row
         a[href="#site-admins"] Site Admins
     div.tabs-content
       div.content.active#unapproved 
-        table
-          thead
-            tr
-              th Id
-              th User Name
-              th Email
-              th Action
-          tbody
-            - for admin in @unapproved_admins do
-              tr
-                td.admin-id = admin.id
-                td.admin-username = admin.username
-                td.admin-email = admin.email
-                td.admin-action = link_to 'edit', edit_admin_user_path(admin)
-
-
+        = render 'admin_table', admins: @unapproved_admins
+       
       div.content#approved 
-        p approved
+        = render 'admin_table', admins: @approved_admins
+      
       div.content#site-admins 
-        p site admins
+        = render 'admin_table', admins: @site_admins
+

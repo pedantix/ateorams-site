@@ -24,4 +24,20 @@ describe Admin do
     it { expect(FactoryGirl.create(:admin).approved?).to_not be_true }
     it { expect(FactoryGirl.create(:approved_admin).approved?).to be_true }
   end
+
+
+  describe "admin scopes"  do
+    let(:unapproved_admins) { FactoryGirl.create_list(:admin, 9) }
+    let(:approved_admins) { FactoryGirl.create_list(:approved_admin, 10) }
+    let(:site_admins) { FactoryGirl.create_list(:site_admin, 11) }
+
+
+    before { unapproved_admins; approved_admins; site_admins; } # approved_admins; site_admins; }
+
+    it { expect(Admin.unapproved_admins.count).to eql 9 }
+    it { expect(Admin.approved_admins.count).to eql 10 }
+    it { expect(Admin.site_admins.count).to eql 11 }
+
+  end
+
 end

@@ -65,7 +65,6 @@ describe AdminUsersController do
   end
 
   context "logged in as a site admin, should respond with 200" do    
-    let(:admin_flash) { "You must be a site admin to perform that action."}
     before { sign_in site_admin }
 
     describe "index" do
@@ -79,8 +78,23 @@ describe AdminUsersController do
     end
 
     describe "update" do
-      before { put :update, id: admin.id }
-      it { should respond_with(200) }
+      it "should change the count of approved admins " do
+        expect do
+          put :update, id: admin.id, admin: { approved: true }
+        end.to change(Admin.approved_admins, :count).by(1)
+      
+        should set_the_flash.to("User privileges updated successfully.")
+        should redirect_to(admin_users_path)
+      end
+
+      it "should change the count of site admins " do
+        expect do
+          put :update, id: admin.id, admin: { approved: true, site_admin: true }
+        end.to change(Admin.site_admins, :count).by(1)
+      
+        should set_the_flash.to("User privileges updated successfully.")
+        should redirect_to(admin_users_path)
+      end
     end
   end
 end

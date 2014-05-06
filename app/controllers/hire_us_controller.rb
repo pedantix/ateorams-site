@@ -6,11 +6,14 @@ class HireUsController < ApplicationController
   end
 
   def create
-    @work_inquiry = WorkInquiry.create(work_inquiry_params)
     begin
+      @work_inquiry = WorkInquiry.create(work_inquiry_params)
+
       @work_inquiry.save!
       flash[:success] = "Your inquiry was succesfully submitted."
       redirect_to confirmation_hire_us_path
+    #rescue ActiveRecord::ValidationError => e
+
     rescue Exception => e
       flash.now[:alert] = "Your inquiry was not submitted, see the form below for errors."
       render 'show'
@@ -19,7 +22,6 @@ class HireUsController < ApplicationController
 
   def confirmation
   end
-
 private
   def work_inquiry_params
     params.require(:work_inquiry).permit(:client_name, :client_email, :client_phone, :job_description, :budget, :reference_source)

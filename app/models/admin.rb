@@ -6,4 +6,8 @@ class Admin < ActiveRecord::Base
 
 
   validates_presence_of :username
+
+  scope :unapproved_admins, -> { where(approved: false) }
+  scope :approved_admins, -> { where(approved: true, site_admin: false) }
+  scope :site_admins, -> { where(approved: true, site_admin: true) }
 end
