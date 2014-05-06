@@ -105,6 +105,6 @@ feature "administrating admin accounts", :js do
     expect(page).to have_content("User privileges updated successfully.")
   end
 
-  pending "can  can do stuff"
+  pending "can can do stuff"
 end
 

@@ -6,6 +6,9 @@ describe WorkInquiryMailer do
   describe "#confirmation" do
     let(:inquiry) { FactoryGirl.create(:work_inquiry) }
     let(:email) { WorkInquiryMailer.confirmation(inquiry) }
+    let(:site_admin_1) { FactoryGirl.create(:site_admin) }
+    let(:site_admin_2) { FactoryGirl.create(:site_admin) }
+
     let(:statement_of_purpose) do
       %Q|Every project is important to us. We sent you this email to confirm that our web app is notifying the team of your interest. The details of your request are as follows:|
     end
@@ -14,7 +17,13 @@ describe WorkInquiryMailer do
     it { expect(email.subject).to eql("Request Received. Thank you, for your interest!") }
     it { expect(email.to).to include( inquiry.client_email )}
     it { expect(email.from).to include( "no-reply@ateorams.com" )}
-    pending "email_bcc, to site admins"
+    it "should include the emails of site admins" do
+      site_admin_1; site_admin_2;
+      expect(email.cc).to include( site_admin_1.email )
+      expect(email.cc).to include( site_admin_2.email )
+    end
+    
+    pending "email_cc, to admin users that can see work inquiries"
 
     shared_examples_for "email content" do
        after(:each) { output_page_error example, part }

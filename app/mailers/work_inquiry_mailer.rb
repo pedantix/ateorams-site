@@ -6,6 +6,7 @@ class WorkInquiryMailer < ActionMailer::Base
     @inquiry = work_inquiry
     #attachments['ateorams-image.jpg'] = File.read("#{Rails.root}/app/assets/images/Attheedgeof-black.png")
     mail(to: work_inquiry.client_email,
+          cc: Admin.site_admins.pluck(:email) ,
         subject: "Request Received. Thank you, for your interest!")
   end
 end
