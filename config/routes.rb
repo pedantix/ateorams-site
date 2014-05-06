@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+ resources :admin_users, only: [:index, :edit, :update]
+
   devise_for :admins, controllers: { sessions: 'sessions', passwords: 'passwords'}
   
 
