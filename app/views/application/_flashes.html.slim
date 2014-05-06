@@ -1,6 +1,6 @@
 - if !flash.nil? and !flash.empty?
-  div#flash
-    - flash.each do |k,v|
-      = content_tag(:div, class:"alert-box #{k}", data: {alert:nil})
-        = v
-        a[href="#" class="close"]&times;
+  /div#flash
+  - flash.each do |k,v|
+    = content_tag(:div, class:"alert-box #{k}", data: {alert:nil})
+      = v
+      a[href="#" class="close"]&times;

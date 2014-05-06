@@ -1,5 +1,5 @@
 header.sticky
-  nav[ class="top-bar" data-topbar]
+  nav[ class="top-bar" data-options="is_hover: false" data-topbar]
     ul.title-area
       li.name
         h1 = link_to root_path do
@@ -14,6 +14,14 @@ header.sticky
         li.divider
         li = link_to 'hire us', hire_us_path
         - if admin_signed_in?
+          li.divider
+          li.has-dropdown 
+            = link_to( 'account', '#' )
+            ul.dropdown
+              li = link_to 'edit', edit_admin_registration_path
+              - if current_admin.site_admin?
+                li.divider
+                li = link_to 'users', '#'
           li.divider
           li = link_to 'sign out',    destroy_admin_session_path, method: :delete
 

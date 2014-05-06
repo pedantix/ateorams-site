@@ -10,8 +10,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    [:username, :phone, :twitter_handle].each {|parameter| devise_parameter_sanitizer.for(:sign_up) << parameter }
+    [:username, :phone, :twitter_handle].each do |parameter| 
+      devise_parameter_sanitizer.for(:sign_up) << parameter 
+      devise_parameter_sanitizer.for(:account_update) << parameter 
+    end  
   end
-
-
 end
