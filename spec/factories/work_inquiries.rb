@@ -8,5 +8,9 @@ FactoryGirl.define do
     job_description { Faker::Lorem.paragraph }
     budget { Faker::Lorem.sentence }
     reply false
+
+    factory :replied_inquiry do
+      reply true
+    end
   end
 end

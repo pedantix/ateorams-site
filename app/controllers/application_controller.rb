@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) << parameter 
     end  
   end
+
+
+
+  def verify_approved_admin!
+    if current_admin.nil? || !current_admin.approved?
+      flash[:notice] = "You must be signed in to perform that action."
+      redirect_to root_path
+    end
+  end
 end

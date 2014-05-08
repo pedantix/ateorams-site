@@ -23,7 +23,6 @@ describe WorkInquiryMailer do
       expect(email.cc).to include( site_admin_2.email )
     end
     
-    pending "email_cc, to admin users that can see work inquiries"
 
     shared_examples_for "email content" do
        after(:each) { output_page_error example, part }

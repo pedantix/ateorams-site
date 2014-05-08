@@ -3,9 +3,9 @@ class Admin < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-
+  
   validates_presence_of :username
+  has_and_belongs_to_many :posts
 
   scope :unapproved_admins, -> { where(approved: false) }
   scope :approved_admins, -> { where(approved: true, site_admin: false) }

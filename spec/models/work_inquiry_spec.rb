@@ -17,4 +17,15 @@ describe WorkInquiry do
   end
 
   it { should respond_to(:reference_source) }
+
+  describe "scopes" do
+    before do
+      FactoryGirl.create_list(:work_inquiry, 17)
+      FactoryGirl.create_list(:work_inquiry, 24, reply: true)
+    end
+
+    it { expect(WorkInquiry.unanswered.count).to eql 17 }
+    it { expect(WorkInquiry.answered.count).to eql 24 }
+
+  end
 end

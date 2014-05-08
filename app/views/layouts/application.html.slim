@@ -2,10 +2,9 @@ doctype html
 html
   head
     meta charset="utf-8" /
-    meta[name="viewport" content="width=device-width, initial-scale=1.0"] /
    
     = render 'layouts/seo_tags'
-   
+    = render 'layouts/zurb'
     - for size in [114, 120, 152, 144, 57, 72, 76] do
       = favicon_link_tag "apple-touch-icon-#{size}x#{size}.png", rel: "apple-touch-icon", sizes: size, type: "image/png" 
     = favicon_link_tag 'favicon.ico'

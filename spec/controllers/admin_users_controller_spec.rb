@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-RSpec.configure do |config|
-  config.include Devise::TestHelpers, type: :controller
-end
+
 
 describe AdminUsersController do
   let(:admin) {FactoryGirl.create(:admin) }
@@ -14,8 +12,6 @@ describe AdminUsersController do
      it { expect(subject).to route(:patch, "/admin_users/#{admin.id}").to(controller: 'admin_users', action: :update, id: admin.id) }
      it { expect(subject).to route(:get, "/admin_users/#{admin.id}/edit").to(controller: 'admin_users', action: :edit, id: admin.id) }
   end
-
-
 
   context "logged out, should redirect all to root path" do    
     describe "index" do

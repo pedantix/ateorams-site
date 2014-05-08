@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 gem 'airbrake'
-gem 'bourbon'
+#gem 'bourbon'
 gem 'coffee-rails'
 gem 'delayed_job_active_record'
 gem 'email_validator'
 gem 'flutie'
 gem 'high_voltage'
 gem 'jquery-rails'
-gem 'neat'
+#gem 'neat'
 gem 'pg'
 gem 'rack-timeout'
 gem 'rails', '~> 4.1.0'
@@ -29,7 +29,8 @@ gem 'foundation-icons-sass-rails', "~> 3.0.0"
 
 gem 'meta-tags'
 gem 'devise'
-gem 'cancancan'
+gem 'kaminari'
+gem 'friendly_id'
 
 group :development do
   gem "annotator"

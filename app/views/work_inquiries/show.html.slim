@@ -1,0 +1,34 @@
+- content_for(:page_title, "Work Inquiry")
+div.row
+  div.12-small.columns
+    br
+    dl.sub-nav
+      dt Action:
+      = content_tag(:dd, class: 'active' ) 
+        = link_to "show", work_inquiry_path(@inquiry)
+      = content_tag(:dd)
+        = link_to "edit", edit_work_inquiry_path(@inquiry)
+hr
+div.row
+  div.12-small.columns
+    p
+      strong Client Name:&nbsp;
+      = @inquiry.client_name
+    p
+      strong Client Email:&nbsp;
+      = @inquiry.client_email
+    p
+      strong Client Phone:&nbsp;
+      = @inquiry.client_phone
+    p
+      strong Budget:&nbsp;
+      = @inquiry.budget
+    p
+      strong Job Description:&nbsp;
+      = @inquiry.job_description
+    p
+      strong Referer:&nbsp;
+      = @inquiry.reference_source.nil? ? 'NONE' : @inquiry.reference_source
+    p
+      strong Status:&nbsp;
+      = @inquiry.reply? ? 'This inquiry has been responded too.': 'Not yet replied.'

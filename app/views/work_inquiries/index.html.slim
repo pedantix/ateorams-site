@@ -1,0 +1,38 @@
+- content_for(:page_title, "Work Inquiries")
+
+div.row
+  div.12-small.columns
+    br
+    dl.sub-nav
+      dt Filter:
+      = content_tag(:dd, class: "#{@filter.nil? ? 'active' : ''}") 
+        = link_to "All", work_inquiries_path
+      = content_tag(:dd, class: "#{@filter == "unanswered" ? 'active' : ''}")
+        = link_to "Unanswered", work_inquiries_path( scope_to: 'unanswered')
+      = content_tag(:dd, class: "#{@filter == "answered" ? 'active' : ''}")
+        = link_to "Answered", work_inquiries_path( scope_to: 'answered')
+    hr
+    - if @inquiries_array.count > 10
+      = paginate @inquiries
+      hr
+    - for inquiry in @inquiries do
+      div.row
+        div.10-small.columns
+          p
+            strong Client Name:&nbsp;
+            = inquiry.client_name
+      div.row
+        div.10-small.columns
+          p
+            strong Project Budget:&nbsp;
+            = inquiry.budget
+      div.row
+        div.12-small.columns
+          p
+            strong Project Description:&nbsp;
+            = inquiry.job_description
+
+      div.row
+        div.5-small.columns = link_to 'show details', work_inquiry_path(inquiry) , id: "show-inquiry-#{inquiry.id}"
+        div.5-small.end.columns = link_to 'edit status', edit_work_inquiry_path(inquiry), id: "edit-inquiry-#{inquiry.id}"
+      hr

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :blogs
+  resources :work_inquiries, only: [:index, :edit, :update, :show]
 
- resources :admin_users, only: [:index, :edit, :update]
+  resources :admin_users, only: [:index, :edit, :update]
 
   devise_for :admins, controllers: { sessions: 'sessions', passwords: 'passwords'}
   

@@ -16,4 +16,8 @@ class WorkInquiry < ActiveRecord::Base
 
   validates :client_email, presence: true,
                            email: { strict_mode: true }
+
+  scope :answered, -> { where(reply: true) }
+  scope :unanswered, -> { where(reply: false) }
+
 end

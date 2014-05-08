@@ -12,6 +12,8 @@ describe Admin do
     it { expect(admin).to respond_to(:twitter_handle) }
     it { expect(admin).to respond_to(:approved) }
     it { expect(admin).to respond_to(:site_admin) }
+    it { should have_and_belong_to_many(:posts) }
+
   end  
 
 
@@ -40,4 +42,5 @@ describe Admin do
 
   end
 
+  
 end
