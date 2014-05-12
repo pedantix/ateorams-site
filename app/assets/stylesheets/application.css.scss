@@ -15,3 +15,15 @@
 
 
 //@import 'hire_us';
+
+
+.date-aside {
+  font-style: italic;
+}
+
+.blog-title {
+  a {
+    &:link{ color: black; }
+    &:hover{ color: DarkGrey; }
+  }
+}

@@ -22,7 +22,6 @@ describe Tag do
       def make_test_item(title)
         @dummy_item = Tag.create!(title: title)
       end
-
       [
         ['simple case', 'this is simple', 'this-is-simple'],
         ['less simple case', 'this  is less simple', 'this-is-less-simple'],
@@ -36,3 +35,5 @@ describe Tag do
     end
   end
 end
+
+

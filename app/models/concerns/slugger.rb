@@ -16,8 +16,7 @@ module Slugger
 
   module ClassMethods
    
-  end
-    
+  end 
 
   
   module InstanceMethods

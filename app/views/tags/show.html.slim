@@ -1,0 +1,9 @@
+- content_for(:page_title, "Tags: #{@tag.title}")
+
+
+div.row
+  div.medium-8.medium-offset-2.small-12.columns
+    - for article in @tag.posts do
+      div.row
+        div.medium-2.columns = date_to_appstring article.created_at
+        div.medium-8.columns = link_to article.title, blog_path(article)

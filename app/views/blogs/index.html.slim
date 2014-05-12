@@ -1,17 +1,19 @@
 - content_for(:page_title, 'stuff to think on')
 
+
 section.row
   div.small-12.columns
     - for post in @posts do
+      article.row
+        aside.medium-3.small-12.columns
+          h6.text-center.date-aside = post.created_at.strftime("%b %d, %Y")
+        div.medium-9.small-12.columns
+          h5.text-left.blog-title = link_to post.title, blog_path(post)
       div.row
-        div.small-2.columns = post.created_at.strftime("%b %d, %Y")
-        div.small-10.columns
-          = link_to post.title, blog_path(post)
-        hr
-      div.row
-        div.small-10.columns
-          = post.abstract_body
+        div.small-12.medium-9.medium-offset-3.columns
+          span.text-justify = render_markdown post.abstract_body
+      br
       br
     div.row
-      div.small-8.large-offset-2.columns
+      div.panel.large-6.medium-8.small-12.small-centered.columns
         = paginate @posts

@@ -32,6 +32,8 @@ gem 'devise'
 gem 'kaminari'
 gem 'friendly_id'
 
+gem 'redcarpet'
+
 group :development do
   gem "annotator"
   gem 'foreman'

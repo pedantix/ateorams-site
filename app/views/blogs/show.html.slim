@@ -1,0 +1,19 @@
+- content_for(:page_title, @post.title)
+
+div.row
+  div.medium-8.medium-offset-2.columns
+    h2 = @post.title
+hr
+
+div.row
+  div.medium-2.small-12.columns
+    p = "by #{@post.author}"
+    br
+    p.date-aside = date_to_appstring(@post.created_at)
+    br
+    - for tag in @post.tags do
+      br -
+      = link_to tag.title, tag_path(tag)
+
+  div.medium-9.end.small-12.columns
+    span.text-justify = render_markdown @post.body

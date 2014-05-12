@@ -2,6 +2,8 @@ require 'spec_helper'
 
 
 feature "viewing blog admin panel", :js do
+  after(:each) { output_page_error example, page }
+ 
   scenario "should be able to see 'posts' as admin" do
     sign_in
     expect(page).to have_link('posts')
@@ -23,6 +25,7 @@ feature "viewing blog index", :js do
   background do
     FactoryGirl.create_list(:post, 40)
   end
+  after(:each) { output_page_error example, page }
 
   scenario "as a visitor should be able to view blog index" do
     visit root_path
@@ -54,31 +57,55 @@ feature "viewing blog index", :js do
       expect(page).to have_content(post.abstract_body)
       expect(page).to have_link(post.title)
     end
-
-
   end
-
 end
 
 
-feature "viewing individual blog posts" do
-  let!(:post) { Post.first }
+feature "viewing blog posts" do
+  given(:md_blog_post) { FactoryGirl.create(:post, body: "This is *markdown*, indeed.", tags_text: "javascript, ruby, MarkDown")}
+  given(:other_tagged_post) { FactoryGirl.create(:post, tags_text: "markdown") }
+  after(:each) { output_page_error example, page }
+  
   background do
-    FactoryGirl.create_list(:post, 10)
+    md_blog_post
+    other_tagged_post
     visit root_path
 
     click_link 'blog'
   end
 
+  scenario "should process markdown and present it as html" do
+    expect(page).to have_xpath("//span[@class='text-justify']/p", text: "This is")
+    expect(page).to have_xpath("//span[@class='text-justify']/p/em", text: "markdown")
+  
+    click_link md_blog_post.title
 
-  pending "should be able to see blog content" do
-    click_link Post.first.title
-    expect(page).to have_site_title(post.title)
-    expect(page).to have_content(post.author)
+    expect(page).to have_site_title(md_blog_post.title)
 
+    expect(page).to have_content md_blog_post.title 
 
+    expect(page).to have_xpath("//span[@class='text-justify']/p", text: "This is")
+    expect(page).to have_xpath("//span[@class='text-justify']/p/em", text: "markdown")
+ 
+    expect(page).to have_content(md_blog_post.author)
+    expect(page).to have_content(md_blog_post.created_at.strftime("%b %d, %Y"))
+  
+    expect(page).to have_link("MarkDown")
+    expect(page).to have_link("ruby")
+    expect(page).to have_link("javascript")
 
   end
 
-  pending "redcarpet markdown"
+  scenario "viewing tags from  blog tag" do
+    click_link md_blog_post.title
+
+    expect(page).to have_link "MarkDown"
+    click_link "MarkDown"
+
+    expect(page).to have_site_title("Tags: MarkDown")
+    expect(page).to have_content( md_blog_post.created_at.strftime("%b %d, %Y"))
+    expect(page).to have_link(md_blog_post.title)
+    expect(page).to have_content(other_tagged_post.created_at.strftime("%b %d, %Y"))
+    expect(page).to have_link(other_tagged_post.title)
+  end
 end

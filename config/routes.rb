@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tags, only: :show
+
   resources :blogs
   resources :work_inquiries, only: [:index, :edit, :update, :show]
 
