@@ -73,7 +73,5 @@ feature "submitting the 'hire us form' with invalid info", :js do
     
     open_email('test@example.com')
     expect(current_email.subject).to eql 'Request Received. Thank you, for your interest!'
-  
-    current_email.save_and_open
   end
 end

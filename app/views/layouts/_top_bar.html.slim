@@ -12,10 +12,10 @@ header.sticky
         li.divider
         - if admin_signed_in?
           li.has-dropdown
-          = link_to('blog', '#')
-          ul.dropdown
-            li = link_to 'posts', blogs_path
-            li = link_to 'new post', '#'
+            = link_to('blog', '#')
+            ul.dropdown#blog-dd
+              li = link_to 'posts', blogs_path
+              li = link_to 'new post', new_blog_path
         - else
           li = link_to 'blog', blogs_path
         li.divider

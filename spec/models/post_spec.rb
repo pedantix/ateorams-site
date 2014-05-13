@@ -51,7 +51,7 @@ describe Post do
       end
     end
     after(:all) do
-      puts @exception_text
+      puts @exception_text unless @exception_text.nil?
     end
 
     context "without tags" do
@@ -143,6 +143,28 @@ describe Post do
     context "with an author should return authors name" do
       let(:authored) { FactoryGirl.create(:post, :with_author)}
       it { expect(authored.author).to eql "Shaun Hubbard"    }
+
+    end
+  end
+
+  describe "#has_owner?" do
+    let(:md_post) { FactoryGirl.create(:post, body: "This is *markdown*, indeed.", tags_text: "javascript, ruby, MarkDown")}
+    let(:admin) { FactoryGirl.create(:approved_admin) }
+    let(:other_admin) { FactoryGirl.create(:approved_admin) }
+
+
+    before(:each) do
+      other_admin
+      md_post.admins  = [admin]     
+    end
+
+    it "should be true for 'admin'" do
+      expect(md_post.has_owner?(admin)).to be_true
+    end
+
+
+    it "should not be true for 'other admin'" do
+      expect(md_post.has_owner?(other_admin)).not_to be_true
 
     end
   end

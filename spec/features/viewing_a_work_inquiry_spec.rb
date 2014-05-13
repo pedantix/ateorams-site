@@ -7,7 +7,6 @@ def show_expectations(work_inquiry)
   expect(page).to have_content(work_inquiry.budget)
   expect(page).to have_content(work_inquiry.job_description)
   expect(page).to have_content(work_inquiry.reference_source)
-
 end
 
 feature "viewing a work request" do
@@ -23,9 +22,7 @@ feature "viewing a work request" do
     
     click_link "work inquiries"
     click_link "show details"
-
   end
-
 
   scenario "should show work inquiry and have sub nav of edit and display" do
     expect(page).to have_site_title("Work Inquiry")
@@ -74,5 +71,4 @@ feature "editing a work inquiry from index page" do
     expect(page).to have_content("Successfully updated status of work inquiry.")    
     expect(page).to have_content('This inquiry has been responded too.')
   end
-
 end

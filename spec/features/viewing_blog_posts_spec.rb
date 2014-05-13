@@ -22,8 +22,12 @@ end
 
 
 feature "viewing blog index", :js do
+  given(:old_blog) { FactoryGirl.create(:post) }
+  given(:new_blog) { FactoryGirl.create(:post) }
+  given(:blog_filler) { FactoryGirl.create_list(:post, 40) }
+
+
   background do
-    FactoryGirl.create_list(:post, 40)
   end
   after(:each) { output_page_error example, page }
 

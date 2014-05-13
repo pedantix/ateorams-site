@@ -104,7 +104,5 @@ feature "administrating admin accounts", :js do
     click_button "Update"
     expect(page).to have_content("User privileges updated successfully.")
   end
-
-  pending "can can do stuff"
 end
 

@@ -32,4 +32,12 @@ feature "logging in an admin", :js do
     click_link("sign out")
     expect(page).to have_content("Signed out successfully.")
   end
+
+
+  scenario "logging in with a non existent email address should more or less pass" do
+    sign_in build(:admin)
+
+    expect(page).to_not have_link("sign out")
+    expect(page).to have_content("Account does not exist.")
+  end
 end

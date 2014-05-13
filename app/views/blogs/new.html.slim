@@ -1,0 +1,13 @@
+- content_for(:page_title, "New Blog Post")
+br
+div.row
+  div.small-12.columns
+    = simple_form_for(@post, url: blogs_path) do |f|
+      = field_set_tag "Think aloud!"
+        = f.error_notification 
+        = f.input :title
+        = f.input :tags_text
+        = f.input :body
+
+        = f.submit "Post To Blog", class: "button small radius"
+

@@ -28,6 +28,10 @@ class Post < ActiveRecord::Base
     self.admins.first.username
   end
 
+  def has_owner?(admin)
+    self.admins.include?(admin)
+  end
+
 private
   def digest_tags
     #clear tags association
