@@ -56,6 +56,4 @@ feature "as an approved site user", :js do
     expect(page).not_to have_site_title("A New Hope!")
     expect(page).to have_content("There was an error creating your post.")
   end
-
-  pending "editing posts"
 end
