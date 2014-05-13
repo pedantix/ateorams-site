@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :body
 
+  default_scope { order('created_at DESC') }
+
   include Slugger
 
   attr_accessor :tags_text

@@ -28,6 +28,15 @@ feature "viewing blog index", :js do
 
 
   background do
+    Timecop.travel(3.months.ago) do
+      old_blog
+    end
+    Timecop.travel(1.months.ago) do
+      blog_filler
+    end
+    Timecop.return
+    new_blog
+
   end
   after(:each) { output_page_error example, page }
 
@@ -37,6 +46,16 @@ feature "viewing blog index", :js do
 
     expect(page).to have_site_title "stuff to think on"
     
+    ### expect new blog to be visible
+    expect(page).to have_content( new_blog.created_at.strftime("%b %d, %Y"))
+    expect(page).to have_content(new_blog.abstract_body)
+    expect(page).to have_link(new_blog.title)
+
+    ## expect old blog to not be visible
+    expect(page).not_to have_content(old_blog.created_at.strftime("%b %d, %Y"))
+    expect(page).not_to have_content(old_blog.abstract_body)
+    expect(page).not_to have_link(old_blog.title)
+
     Post.all.limit(25).each do |post|
       expect(page).to have_content( post.created_at.strftime("%b %d, %Y"))
       expect(page).to have_content(post.abstract_body)
