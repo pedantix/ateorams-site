@@ -10,4 +10,8 @@ class Admin < ActiveRecord::Base
   scope :unapproved_admins, -> { where(approved: false) }
   scope :approved_admins, -> { where(approved: true, site_admin: false) }
   scope :site_admins, -> { where(approved: true, site_admin: true) }
+
+  def active_for_authentication?
+    self.approved?
+  end
 end
