@@ -62,7 +62,7 @@ feature "submitting the 'hire us form' with invalid info", :js do
     expect(page).to have_content("Your inquiry was succesfully submitted.")    
     expect(page).to have_site_title("Request Received")
     expect(page).to have_selector('h2', 'Thank you, for your interest!')
-    expect(page).to have_content("A confirmation email has been sent to the email account you provided, and we are now aware of your interst. A representative from ATEORAMS will be in contact with you shortly.")
+    expect(page).to have_content("A confirmation email has been sent to the email account you provided, and we are now aware of your interest. A representative from ATEORAMS will be in contact with you shortly.")
 
     expect(page).to have_content("Every application is crafted with a customer-centric focus. We look forward to working with you to develop this application.")
   end

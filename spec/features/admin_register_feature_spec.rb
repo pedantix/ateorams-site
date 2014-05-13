@@ -27,7 +27,7 @@ feature "registering an admin", :js do
     fill_in "admin_username", with: user_name
     click_button "Sign up"
     
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content("You have signed up successfully. Once an admin has approved you, you will be able to use the site.")
     new_user = Admin.where(email: user_email).first
     
     expect(new_user).not_to be_nil
@@ -47,7 +47,10 @@ feature "registering an admin", :js do
     fill_in "admin_phone", with: "+1913371337"
     click_button "Sign up"
     
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to_not have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content("You have signed up successfully. Once an admin has approved you, you will be able to use the site.")
+
+    expect(page).not_to have_link("sign out")
     new_user = Admin.where(email: user_email).first
     
     expect(new_user).not_to be_nil
