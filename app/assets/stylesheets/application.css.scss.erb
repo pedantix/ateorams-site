@@ -1,0 +1,62 @@
+@charset 'utf-8';
+
+///////////////////////////////////////////////////////////////////////////////
+
+//@import 'bourbon';
+//@import 'neat';
+
+///////////////////////////////////////////////////////////////////////////////
+
+@import 'foundation_and_overrides';
+
+@import 'topbar';
+@import 'buttons';
+
+
+
+//@import 'hire_us';
+
+
+.date-aside {
+  font-style: italic;
+}
+
+.blog-title {
+  a {
+    &:link{ color: black; }
+    &:hover{ color: DarkGrey; }
+  }
+}
+
+
+
+.blog-header{
+  background-image: url( <%= asset_path 'blog-header1.jpg' %> );
+  background-repeat:no-repeat;  
+  background-color:black; 
+  background-size: 100% 100%;
+
+  height: 400px;
+
+  h2{
+    color: DarkSlateGrey;
+  }
+}
+
+
+
+.blog-content{
+  background-color: rgb(51,51,51);
+  color: White;
+
+  a{
+    &:link{ color: rgb(0,140,186); }
+    &:hover{ color: DarkGrey; }
+  }
+
+}
+
+
+.date-aside{
+  color: White;
+}
