@@ -5,9 +5,18 @@
 
 div.row
   div.small-12.small-centered.columns
-    h2.form-heading Hire ATEORAMS
+    h4.form-heading Apply Reason And Madness to your project...
+
+div.row
+  br
+  br
+
+div.row
+  div.small-8.small-centered.columns
+    p Tell us a bit about yourself
+div.row
+  div.small-8.small-centered.columns
     = form_for @work_inquiry, url: hire_us_path do |f|
-      
       div.row
         div.small-1.columns
           = f.label :client_name, "*", class: 'right inline required'
@@ -28,17 +37,29 @@ div.row
           = f.text_field :client_phone, placeholder: "What is your best contact phone number?", class:"#{f.object.errors[:client_phone].empty? ? 'no-error' : 'error'}"
           = form_error(f.object, :client_phone)
       div.row
+        div.small-12.columns
+          p Tell us about your project
+
+      div.row
+        div.small-1.columns
+          = f.label :job_description, "*", class: 'right inline required'
+        div.small-11.columns    
+          = f.text_area :job_description, placeholder: "Tell us about your project...", class:"#{f.object.errors[:job_description].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :job_description)
+
+      div.row
+        div.small-1.columns
+          = f.label :goals, "*", class: 'right inline required'
+        div.small-11.columns    
+          = f.text_area :goals, placeholder: "Describe the features...", class:"#{f.object.errors[:goals].empty? ? 'no-error' : 'error'}"
+          = form_error(f.object, :goals)
+
+      div.row
         div.small-1.columns
           = f.label :budget, "*", class: 'right inline required'
         div.small-11.columns
           = f.text_field :budget, placeholder: "How much do you have budgeted for this project?", class:"#{f.object.errors[:budget].empty? ? 'no-error' : 'error'}"
           = form_error(f.object, :budget)
-      div.row
-        div.small-1.columns
-          = f.label :job_description, "*", class: 'right inline required'
-        div.small-11.columns    
-          = f.text_area :job_description, placeholder: "Describe the project...", class:"#{f.object.errors[:job_description].empty? ? 'no-error' : 'error'}"
-          = form_error(f.object, :job_description)
       div.row
         div.small-1.columns
           = f.label :reference_source, "&nbsp;".html_safe, class: "optional-input"
@@ -49,3 +70,5 @@ div.row
       div.row
         div.small-4.small-offset-2.columns
           = f.submit "submit", class: 'ateorams-submit'
+
+

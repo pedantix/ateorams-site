@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 
+def summon_us_text
+"Apply Reason And Madness to your project..."
+end
+
 
 feature "the 'hire us' form", :js do
   after(:each) { output_page_error example, page }
@@ -10,12 +14,13 @@ feature "the 'hire us' form", :js do
 
     #form 
     expect(page).to have_site_title("Hire Us")
-    expect(page).to have_xpath("//h2", "Hire ATEORAMS")
+    expect(page).to have_xpath("//h4", text: summon_us_text)
     expect(page).to have_input(:work_inquiry_client_name).placeholder("What is your name?")
     expect(page).to have_input(:work_inquiry_client_email).placeholder("What email address should we use?")
     expect(page).to have_input(:work_inquiry_client_phone).placeholder("What is your best contact phone number?")
     expect(page).to have_input(:work_inquiry_budget).placeholder("How much do you have budgeted for this project?")
-    expect(page).to have_textarea(:work_inquiry_job_description).placeholder("Describe the project...")
+    expect(page).to have_textarea(:work_inquiry_job_description).placeholder("Tell us about your project...")
+    expect(page).to have_textarea(:work_inquiry_goals).placeholder("Describe the features...")
     expect(page).to have_input(:work_inquiry_reference_source).placeholder("How did you hear about us?")
    
     expect(page).to have_button("submit")
@@ -34,8 +39,8 @@ feature "submitting the 'hire us form' with invalid info", :js do
         click_button 'submit'
     end.not_to change(WorkInquiry, :count)
 
-    expect(page).to have_xpath("//h2", "Hire ATEORAMS")
-    expect(page).to have_xpath("//small[@class='error']", count: 5)
+    expect(page).to have_xpath("//h4",text: summon_us_text )
+    expect(page).to have_xpath("//small[@class='error']", count: 6)
     expect(page).to have_content("Your inquiry was not submitted, see the form below for errors.")
     expect(page).to have_xpath("//a[@class='close']")
   end
@@ -53,6 +58,7 @@ feature "submitting the 'hire us form' with invalid info", :js do
     fill_in "work_inquiry_client_phone", with: Faker::PhoneNumber.phone_number
     fill_in "work_inquiry_budget", with: Faker::Lorem.sentence
     fill_in "work_inquiry_job_description", with: Faker::Lorem.paragraph
+    fill_in "work_inquiry_goals", with: Faker::Lorem.paragraph
     fill_in "work_inquiry_reference_source", with: Faker::Lorem.sentence
 
     click_button 'submit'

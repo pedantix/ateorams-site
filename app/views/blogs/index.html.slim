@@ -1,7 +1,11 @@
 - content_for(:page_title, 'stuff to think on')
 
 
-section.row
+
+= render 'blog_header'
+
+
+section.row.blog-content
   div.small-12.columns
     - for post in @posts do
       article.row

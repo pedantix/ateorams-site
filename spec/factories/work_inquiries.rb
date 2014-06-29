@@ -6,6 +6,7 @@ FactoryGirl.define do
     client_email { Faker::Internet.email }
     client_phone { Faker::PhoneNumber.phone_number }
     job_description { Faker::Lorem.paragraph }
+    goals { Faker::Lorem.paragraph }
     budget { Faker::Lorem.sentence }
     reply false
 

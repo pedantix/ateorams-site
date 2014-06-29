@@ -34,6 +34,9 @@ feature "'application' template", :js do
     expect(page).to have_meta_path({name: "keywords", content: "jacksonville, software, ruby, rails, web, apps, websites, ios, osx, cocoa"})
   end
 
+  scenario "should have mail identification for SendGrid" do
+    expect(page).to have_meta_path({name: "transactional_email", content: "SendGrid" })
+  end
 
   scenario "should have a topbar with Zurb structure with links to 'blog' and 'hire us'" do
     topbar_xpath = %Q|//header/nav[@class="top-bar" and @data-topbar]|
@@ -50,8 +53,14 @@ feature "'application' template", :js do
     
     blog_xpath = %Q|#{right_nav_xpath}/li/a[text()='blog']|
     hire_us_xpath = %Q|#{right_nav_xpath}/li/a[text()='hire us']|
+    
+    
+
     expect(page).to have_xpath(blog_xpath, count: 1)
     expect(page).to have_xpath(hire_us_xpath, count: 1)
+  
+    expect(page).to have_link "about"
+    expect(page).to have_link "github"
   end
 end
 

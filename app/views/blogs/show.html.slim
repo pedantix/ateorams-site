@@ -1,5 +1,8 @@
 - content_for(:page_title, @post.title)
 
+
+= render "blog_header"
+
 div.row
   div.medium-8.medium-offset-2.columns
     h2 = @post.title

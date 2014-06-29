@@ -7,6 +7,7 @@ header.sticky
       li.toggle-topbar.menu-icon = link_to '#' do
         span Menu
 
+
     section.top-bar-section
       ul.right
         li.divider
@@ -17,7 +18,11 @@ header.sticky
               li = link_to 'posts', blogs_path
               li = link_to 'new post', new_blog_path
         - else
+          li = link_to 'about', page_path(id: 'about')
+        li.divider
           li = link_to 'blog', blogs_path
+        li.divider
+          li = link_to 'github'
         li.divider
         li = link_to 'hire us', hire_us_path
         - if admin_signed_in?         

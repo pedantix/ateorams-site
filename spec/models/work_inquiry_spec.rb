@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WorkInquiry do
   it "should have required attributes" do
-    [:budget, :client_email, :client_name, :client_phone, :job_description].each do |a|
+    [:budget, :client_email, :client_name, :client_phone, :job_description, :goals].each do |a|
       should validate_presence_of(a)
     end
   end

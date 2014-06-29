@@ -24,7 +24,7 @@ class HireUsController < ApplicationController
   end
 private
   def work_inquiry_params
-    params.require(:work_inquiry).permit(:client_name, :client_email, :client_phone, :job_description, :budget, :reference_source)
+    params.require(:work_inquiry).permit(:goals, :client_name, :client_email, :client_phone, :job_description, :budget, :reference_source)
   end
 
   def send_confirmation

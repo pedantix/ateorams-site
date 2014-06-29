@@ -10,7 +10,7 @@
 # * reply [boolean] - has a reply been sent?
 # * updated_at [datetime] - last update time
 class WorkInquiry < ActiveRecord::Base
-  [:budget, :client_name, :client_phone, :job_description].each do |a|
+  [:budget, :client_name, :client_phone, :job_description, :goals].each do |a|
     validates_presence_of a
   end
 

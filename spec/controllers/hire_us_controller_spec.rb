@@ -15,8 +15,6 @@ describe HireUsController do
     end
   end
 
-
-
   describe "#create" do
     let(:valid_inquiry) do
       {
@@ -24,6 +22,7 @@ describe HireUsController do
         client_email:  Faker::Internet.email,
         client_phone:  Faker::PhoneNumber.phone_number,
         job_description: Faker::Lorem.paragraph,
+        goals: Faker::Lorem.paragraph,
         budget: Faker::Lorem.sentence,
         reference_source: Faker::Lorem.sentence
       }
@@ -52,7 +51,5 @@ describe HireUsController do
       before { post :create,  { work_inquiry: invalid_inquiry} }
       it { should render_template('show') }
     end
-
   end
-
 end

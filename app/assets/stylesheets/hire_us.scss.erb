@@ -1,7 +1,7 @@
 @import "foundation/components/panels";
 
 body {  
-  background-image: url( <%= asset_path 'celestial_birth_ateorams_ol.jpg' %> );
+  background-image: url( <%= asset_path 'raw_img_for_working_ex.JPG' %> );
   background-repeat:no-repeat;  
   background-color:black; background-size: cover; 
 };
@@ -38,11 +38,15 @@ $form-border-color: Grey;
   &:-ms-input-placeholder { color: $color; }
 }
 
+input[type="text"]:focus, textarea:focus{
+  background: hsla(348, 90, 48, 0.8);
+}
 
 input[type="text"],
 textarea {
   @include hire-us-form;
   @include placeholder(#fff);
+
 }
 
 @mixin confirmation_style{
